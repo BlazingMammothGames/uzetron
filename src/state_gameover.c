@@ -19,13 +19,19 @@ void StateGameOver()
 {
 	if(winnerState == 3)
 		DrawString(0, 44, "   Tie Game!");
-	if(winnerState == 1)
+	else if(winnerState == 1)
+	{
 		DrawString(0, 44, "    P1 Won!");
+		p1Score++;
+	}
 	if(winnerState == 2)
+	{
 		DrawString(0, 44, "    P2 Won!");
+		p2Score++;
+	}
 	fadein(0, 255, 0, 0);
 	
-	WaitVsync(60);
+	WaitVsync(10);
 	
 	gameState = STATE_MENU;
 	

@@ -22,17 +22,26 @@
 #include <avr/interrupt.h>
 #include "uzebox.h"
 
+// utility stuff
 #include "text.c"
 #include "input.c"
 #include "gfx.c"
 
+// defines for what state we're in
 #define STATE_MENU	(0)
 #define STATE_PLAY	(1)
 #define STATE_GAMEOVER	(2)
 
-int gameState = STATE_MENU;
-int winnerState = 0;
+// keep track of the game state and who won the last round
+char gameState = STATE_MENU;
+char winnerState = 0;
+char firstMenu = 1;
 
+// keep track of player scores
+char p1Score = 0;
+char p2Score = 0;
+
+// the actual states
 #include "state_menu.c"
 #include "state_play.c"
 #include "state_gameover.c"
@@ -51,13 +60,12 @@ int main()
 	
 	DrawMammoth();
 	fadein(0, 47, 13, 255);
-	WaitVsync(120);
+	WaitVsync(60);
 	fadeout();
 	
 	DrawLogo();
-	fadein(0, 192, 14, 255);
-	WaitVsync(120);
-	fadeout();
+	fadein(0, 255, 14, 192);
+	WaitVsync(30);
 	
 	while(1)
 	{

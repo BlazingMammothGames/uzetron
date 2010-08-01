@@ -116,14 +116,6 @@ void StatePlay()
 		else
 		{
 			fadeout();
-			ClearVram();
-			palette[0] = 0;
-			palette[1] = 255;
-			DrawString(0, 44, "   Game Over");
-			fadein(0, 255, 0, 0);
-			WaitVsync(60);
-			fadeout();
-				
 			gameState = STATE_GAMEOVER;
 		}
 	}
