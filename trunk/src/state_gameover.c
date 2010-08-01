@@ -29,6 +29,13 @@ void StateGameOver()
 		DrawString(0, 44, "    P2 Won!");
 		p2Score++;
 	}
+	
+	if(p1Score > 99 || p2Score > 99)
+	{
+		p1Score = 0;
+		p2Score = 0;
+	}
+	
 	fadein(0, 255, 0, 0);
 	
 	WaitVsync(10);
