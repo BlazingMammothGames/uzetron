@@ -21,13 +21,20 @@ from PIL import Image
 def GetPixel(ls, x, y, width):
 	return ls[(y * width) + x]
 
-im = Image.open("mammoth.png")
+im = Image.open("tron.png")
 
 px = list(im.getdata())
 
-file = open("mammoth.c", "w")
+file = open("logo.c", "w")
 
-file.write("const char mammoth[] PROGMEM = { ")
+# rearrange colors
+for i in range(0, len(px)):
+	if px[i] == 1:
+		px[i] = 3
+	elif px[i] == 3:
+		px[i] = 1
+
+file.write("const char logo[] PROGMEM = { ")
 for y in range(0, 96):
 	for x in range(0, 30):
 		c = 0

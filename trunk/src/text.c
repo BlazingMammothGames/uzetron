@@ -27,6 +27,12 @@ void DrawChar(char x, char y, char c)
 	}
 }
 
+void DrawNumber(char x, char y, char n)
+{
+	DrawChar(x, y, (char)((n / 8) + 48));
+	DrawChar(x+8, y, (char)((n % 8) + 48));
+}
+
 void DrawString(char x, char y, char *str)
 {
 	for(int i = 0; i < strlen(str); i++)

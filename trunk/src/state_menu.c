@@ -25,13 +25,20 @@ void FillArea1(char x1, char y1, char x2, char y2, char fill)
 
 void StateMenu()
 {	
-	DrawString(0, 15, "     Tron!");
-	DrawString(0, 35, "   Ready Up!");
-	DrawString(0, 45, "    (start)");
+//	DrawString(0, 15, "     Tron!");
+	DrawLogo();
 	DrawString(0, 87, "             P2");
+	DrawString(0, 57, "   Ready Up!");
+	DrawString(0, 67, "    (start)");
 	DrawString(0, 87, "P1");
+	DrawChar(56, 87, ':');
+	DrawNumber(64, 87, p2Score);
+	DrawNumber(40, 87, p1Score);
 	
-	fadein(0, 255, 192, 14);
+	if(firstMenu == 1)
+		firstMenu = 0;
+	else
+		fadein(0, 255, 14, 192);
 	
 	/*palette[0] = 0;   // black
 	palette[1] = 255; // white
@@ -54,7 +61,7 @@ void StateMenu()
 			if(btnPressed[i] & BTN_START)
 			{
 				pReady[i] = 1;
-				FillArea1(i * 103, 87, (i * 103) + 16, 95, i + 2);
+				FillArea1(i * 103, 87, (i * 103) + 16, 95, 3 - i);
 			}
 		}
 	}
@@ -63,16 +70,7 @@ void StateMenu()
 	
 	gameState = STATE_PLAY;
 	
-	DrawString(0, 44, "    Ready?");
-	fadein(0, 255, 0, 0);
-	
-	WaitVsync(60);
-	ClearVram();
-	DrawString(0, 44, "     Set?");
-	
-	WaitVsync(60);
-	ClearVram();
 	DrawString(0, 44, "      Go!");
-	WaitVsync(60);
+	WaitVsync(30);
 	ClearVram();
 }
